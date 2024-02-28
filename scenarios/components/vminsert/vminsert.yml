@@ -1,7 +1,7 @@
 services:
   vminsert-1:
     container_name: vminsert-1
-    image: victoriametrics/vminsert
+    image: victoriametrics/vminsert:v1.98.0-cluster
     depends_on:
       - "vmstorage-1"
     command:

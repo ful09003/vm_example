@@ -1,7 +1,7 @@
 services:
   vmstorage-1:
     container_name: vmstorage-1
-    image: victoriametrics/vmstorage
+    image: victoriametrics/vmstorage:v1.98.0-cluster
     ports:
       - "8482"
       - "8400"

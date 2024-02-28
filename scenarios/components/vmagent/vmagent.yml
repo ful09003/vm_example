@@ -2,7 +2,7 @@
 services:
   vmagent-1:
     container_name: vmagent-1
-    image: victoriametrics/vmagent
+    image: victoriametrics/vmagent:v1.98.0
     depends_on:
       - vmstorage-1
       - vminsert-1

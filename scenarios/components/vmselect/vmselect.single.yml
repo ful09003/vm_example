@@ -2,7 +2,7 @@
 services:
   vmselect-1:
     container_name: vmselect-1
-    image: victoriametrics/vmselect
+    image: victoriametrics/vmselect:v1.98.0-cluster
     depends_on:
       - vmstorage-1
     command:
