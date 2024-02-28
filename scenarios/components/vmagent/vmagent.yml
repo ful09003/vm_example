@@ -1,0 +1,15 @@
+# Scrapes node_exporter container
+services:
+  vmagent-1:
+    container_name: vmagent-1
+    image: victoriametrics/vmagent
+    depends_on:
+      - vmstorage-1
+      - vminsert-1
+    volumes:
+      - "./confs/vmagent_scrape_config.yml:/opt/test/vmagent_scrape.yml"
+    command:
+      - '-promscrape.config=/opt/test/vmagent_scrape.yml'
+      - '-remoteWrite.url=http://vminsert-1:8480/insert/0/prometheus'
+    ports:
+      - "8429:8429"

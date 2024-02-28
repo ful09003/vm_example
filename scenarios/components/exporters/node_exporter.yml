@@ -1,0 +1,11 @@
+services:
+  nodeexporter:
+    image: prom/node-exporter
+    volumes:
+      - "/:/host"
+    ports:
+      - "9100:9100"
+    container_name: nodeexporter
+    pid: host
+    command:
+      --path.rootfs=/host

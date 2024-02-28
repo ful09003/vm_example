@@ -1,0 +1,32 @@
+# Scenario designed to mimick a tiered vmselect setup
+# RE: https://victoriametrics.slack.com/archives/CGZF1H6L9/p1708953533736879
+# Includes:
+# - 1x vmstorage (simulating a storage cluster)
+# - 1x node_exporter (we have to scrape _something_, after all :))
+# - 1x Grafana, pre-configured to query vmselect-1 (uses Grafana upstream default username/pass: admin/admin)
+# - 1x vminsert, which writes to vmstorage
+# - 1x vmselect (vmselect-1), which sits in front of vmstorage1
+# - 1x vmselect (vmselect-2), which proxies to vmselect-1
+# - 1x vmagent to scrape node_exporter and write to vminsert
+include:
+  -
+    path: ./components/vmstorage/vmstorage01.yml
+    project_directory: ..
+  -
+    path: ./components/exporters/node_exporter.yml
+    project_directory: ..
+  -
+    path: ./components/grafana/grafana.yml
+    project_directory: ..
+  -
+    path: ./components/vminsert/vminsert.yml
+    project_directory: ..
+  -
+    path: ./components/vmselect/vmselect.single.yml
+    project_directory: ..
+  -
+    path: ./components/vmselect/vmselect.tiered.yml
+    project_directory: ..
+  -
+    path: ./components/vmagent/vmagent.yml
+    project_directory: ..

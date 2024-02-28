@@ -1,0 +1,11 @@
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - vmselect-1
+      - vmselect-2
+    volumes:
+      - "./confs/grafana_vmselect_notls.yml:/etc/grafana/provisioning/datasources/vm.yml:ro"

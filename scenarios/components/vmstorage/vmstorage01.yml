@@ -1,0 +1,16 @@
+services:
+  vmstorage-1:
+    container_name: vmstorage-1
+    image: victoriametrics/vmstorage
+    ports:
+      - "8482"
+      - "8400"
+      - "8401"
+    volumes:
+      - vmstorage1-data:/storage
+    command:
+      - '--storageDataPath=/storage'
+    restart: always
+
+volumes:
+  vmstorage1-data:

@@ -1,0 +1,12 @@
+# queries just a vmstorage1, meant to be part of a tiered setup
+services:
+  vmselect-1:
+    container_name: vmselect-1
+    image: victoriametrics/vmselect
+    depends_on:
+      - vmstorage-1
+    command:
+      - '--storageNode=vmstorage-1:8401'
+      - '--clusternativeListenAddr=:8401'
+    ports:
+      - "8481:8481"
